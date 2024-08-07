@@ -71,7 +71,7 @@ def main():
         #st.write(f"Modelo seleccionado: {model_option}")
         w_vecgor = model['vector']
         feature_names = w_vecgor.get_feature_names_out()
-        st.write("The 100 words selected by the TF-IDF model are:")
+        st.write("The 500 words selected by the TF-IDF model are:")
         #st.write(feature_names)
         
         X_train=model['X_train']
