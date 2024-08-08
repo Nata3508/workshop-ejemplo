@@ -178,17 +178,17 @@ def main():
         st.session_state['test_df'] = preprocess.read_manual(title,author,text)
         result = author_parcen_check(authors, st.session_state['test_df'])
         #st.dataframe(result)
+     # Procesar datos
+    st.dataframe(result)  
+    st.session_state['test_df'] = preprocess.remove_rows()
+    st.session_state['test_df'] = preprocess.remove_duplicates()
+    st.session_state['test_df'] = preprocess.remove_rows_lower_than20()
+    st.session_state['test_df'] = preprocess.newtext()
+    st.session_state['test_df'] = preprocess.filter_english_text_edit_df(st.session_state['test_df'], 'new_text')
 
     if st.button("Evaluate", key="evaluate_button"):
         if 'author' in st.session_state['test_df'].columns and 'title' in st.session_state['test_df'].columns and 'text' in st.session_state['test_df'].columns:
-             # Procesar datos
-            st.dataframe(result)  
-            st.session_state['test_df'] = preprocess.remove_rows()
-            st.session_state['test_df'] = preprocess.remove_duplicates()
-            st.session_state['test_df'] = preprocess.remove_rows_lower_than20()
-            st.session_state['test_df'] = preprocess.newtext()
-            st.session_state['test_df'] = preprocess.filter_english_text_edit_df(st.session_state['test_df'], 'new_text')
-    
+
             # Vectorizar el texto
             object_vectorization = Vectorization()
             filtered_corpus = st.session_state['test_df']["new_text"].values
