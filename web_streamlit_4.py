@@ -71,14 +71,14 @@ def main():
         #st.write(f"Modelo seleccionado: {model_option}")
         w_vecgor = model['vector']
         feature_names = w_vecgor.get_feature_names_out()
-        st.write("The 500 words selected by the TF-IDF model are:")
+        st.write("The 100 words selected by the TF-IDF model are:")
         #st.write(feature_names)
         
         X_train=model['X_train']
         Y_train=model['Y_train']
         # Convertir X_train a denso si el modelo es Gaussian NB
-        #if model_option == 'Gaussian NB':
-        #    X_train = X_train.toarray()
+        if model_option == 'Gaussian NB':
+            X_train = X_train.toarray()
         # Filtrar las noticias verdaderas y falsas
         true_indices = [i for i, label in enumerate(Y_train) if label == 0]
         false_indices = [i for i, label in enumerate(Y_train) if label == 1]
