@@ -16,13 +16,13 @@ from sklearn.metrics import (
 )  # Import precision_score, recall_score, and f1_score
 # Función para cargar el modelo
 # Función para cargar el modelo
-@st.cache_resource
+#@st.cache_resource
 def load_model(file_name):
     with open(file_name, 'rb') as file:
         model = pickle.load(file)
     return model
 
-@st.cache_data
+#@st.cache_data
 def load_data(file_path):
     return pd.read_csv(file_path)
 
