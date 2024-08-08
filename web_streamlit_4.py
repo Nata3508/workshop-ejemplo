@@ -77,8 +77,8 @@ def main():
         X_train=model['X_train']
         Y_train=model['Y_train']
         # Convertir X_train a denso si el modelo es Gaussian NB
-        if model_option == 'Gaussian NB':
-            X_train = X_train.toarray()
+        #if model_option == 'Gaussian NB':
+        #    X_train = X_train.toarray()
         # Filtrar las noticias verdaderas y falsas
         true_indices = [i for i, label in enumerate(Y_train) if label == 0]
         false_indices = [i for i, label in enumerate(Y_train) if label == 1]
@@ -201,6 +201,8 @@ def main():
             else:
                  # Hacer predicciones
                 model_vec=model['model']
+                if model_option == 'Gaussian NB':
+                    unigram_vectors_without_stopwords=unigram_vectors_without_stopwords.toarray()
                 predictions = model_vec.predict(unigram_vectors_without_stopwords)
                 # Mostrar las predicciones
                 st.session_state['label_prediction'] = predictions.tolist()
